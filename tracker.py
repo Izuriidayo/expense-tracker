@@ -1,5 +1,5 @@
 # Expense Tracker: Installment 1: The Landing Page
-# Author: <Saja, Vince Stanley P.>
+# Author: Saja, Vince Stanley P.
 # Description: Prints the landing page (banner, menu, footer) of the expense tracker.
 
 print("=" * 40)
@@ -8,7 +8,6 @@ print("\tKnow where your おかね goes.")
 print("=" * 40)
 
 print("\nども! This is your personal expense tracker.\n")
-
 print("MAIN MENUです")
 print("\t[1] Add an expense\t(coming soon)")
 print("\t[2] View all expenses\t(coming soon)")
