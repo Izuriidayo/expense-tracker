@@ -1,6 +1,7 @@
-# Expense Tracker: Installment 1: The Landing Page
+# Expense Tracker: Installment 3: The Tracker Does Math
 # Author: Saja, Vince Stanley P.
-# Description: Prints the landing page (banner, menu, footer) of the expense tracker.
+# Description: Prints The Tracker Does Math of the expense tracker.
+#python tracker.py
 
 print("=" * 40)
 print("\tEXPENSE TRACKER")
@@ -23,16 +24,27 @@ amount1 = float(input("Amount spent:"))
 item2 = input("Second expense:")
 amount2 = float(input("Amount spent:"))
 
+tax = float(input("What is the tax rate (%): "))
+budget = float(input("What is your budget:"))
+
 total = amount1 + amount2
 average = total / 2
 
+tax = total *  (tax /100)
+
+over_budget = total > budget
+left = budget - total
 print()
 print("\n" + "-" * 40)
 print("SUMMARY")
-print(f"\t- {item1}: \t${amount1}")
-print(f"\t- {item2}: \t${amount2}")
-print(f"total spent: \t${total}")
-print(f"Average: \t${average}")
+print(f"- {item1}:        ${amount1:.2f}")
+print(f"- {item2}:        ${amount2:.2f}")
+print(f"Subtotal: \t${total:.2f}")
+print(f"Average: \t${average:.2f}")
+print(f"Tax: \t\t${tax:.2f}")
+print(f"Grand total: \t${total + tax:.2f}")
+print(f"Over the budget:{over_budget}")
+print(f"Left in budget: ${left:.2f}")
 print("\n" + "-" * 40)
-print("Made by: <Saja, Vince Stanley P.>  |  Installment 1")
+print("Made by: <Saja, Vince Stanley P.>  |  Installment 3")
 print("=" * 40)
