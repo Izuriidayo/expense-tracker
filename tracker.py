@@ -1,6 +1,6 @@
-# Expense Tracker: Installment 4: The Tracker Makes Decisions
+# Expense Tracker: Installment 5: The Menu Comes Alive
 # Author: Saja, Vince Stanley P.
-# Description: Prints The Tracker Makes Decisions of the expense tracker.
+# Description: Prints The Menu Comes Alive of the expense tracker.
 #python tracker.py
 
 print("=" * 40)
@@ -8,70 +8,62 @@ print("\tEXPENSE TRACKER")
 print("\tKnow where your おかね goes.")
 print("=" * 40)
 
-print("\nども! This is your personal expense tracker.\n")
-print("MAIN MENUです")
-print("\t[1] Add an expense\t(coming soon)")
-print("\t[2] View all expenses\t(coming soon)")
-print("\t[3] Show total spent\t(coming soon)")
-print("\t[4] Exit\t\t(coming soon)")
-
 name = input("\nWhat is your name? ")
-print(f"Hello, {name}! 始めよか.")
+tax_percent = float(input("Tax rate %? "))
+budget = float(input("Your budget? "))
+print(f"\nWelcome, {name}!")
 
-item1 = input("First expense:")
-amount1 = float(input("Amount spent:"))
-if amount1 > 200:
-    print("  Huge expense - are you sure?")
-elif amount1 > 100:
-    print("  Big expense.")
-elif amount1 > 50:
-    print("  Moderate expense.")
-else:
-    print("  Small expense.")
+subtotal = 0.0
+count = 0
+choice = ""
 
-item2 = input("Second expense:")
-amount2 = float(input("Amount spent:"))
-if amount2 > 200:
-    print("  Huge expense - are you sure?")
-elif amount2 > 100:
-    print("  Big expense.")
-elif amount2 > 50:
-    print("  Moderate expense.")
-else:
-    print("  Small expense.")
+while choice != "4":
+    print("\nMAIN MENU")
+    print("  [1] Add an expense")
+    print("  [2] View all expenses (coming soon)")
+    print("  [3] Show total spent")
+    print("  [4] Exit")
+    choice = input("Choose 1-4: ")
 
-if amount1 > 100 and amount2 > 100:
-    print("  Two big expenses in a row - slow down!")
+    if choice == "1":
+        amount = float(input("Amount? "))
+        subtotal = subtotal + amount
+        count = count + 1
+        if amount > 200:
+            print("  Huge expense - are you sure?")
+        elif amount > 100:
+            print("  Big expense.")
+        elif amount > 50:
+            print("  Moderate expense.")
+        else:
+            print("  Small expense.")
 
-tax = float(input("What is the tax rate (%): "))
-budget = float(input("What is your budget:"))
+    elif choice == "2":
+        print("  Coming soon: the tracker can't remember each item yet.")
 
-total = amount1 + amount2
-average = total / 2
+    elif choice == "3":
+        tax = subtotal * (tax_percent / 100)
+        grand_total = subtotal + tax
+        over_budget = grand_total > budget
+        left = budget - grand_total
+        tax_label = f"Tax ({tax_percent}%):"
+        print(f"  {'Expenses:':<14}{count}")
+        print(f"  {'Subtotal:':<14}${subtotal:.2f}")
+        print(f"  {tax_label:<14}${tax:.2f}")
+        print(f"  {'Grand total:':<14}${grand_total:.2f}")
+        if over_budget:
+            print(f"  Over budget by ${grand_total - budget:.2f}!")
+        elif grand_total > budget * 0.9:
+            print(f"  Careful: only ${left:.2f} left.")
+        else:
+            print(f"  Within budget. ${left:.2f} left.")
 
-tax = total * (tax / 100)
-grand_total = total + tax
+    elif choice == "4":
+        print(f"Goodbye, {name}!")
 
-over_budget = grand_total > budget
-left = budget - grand_total
+    else:
+        print("  Please choose 1, 2, 3 or 4.")
 
-print()
-print("\n" + "-" * 40)
-print("SUMMARY")
-print(f"- {item1}:        ${amount1:.2f}")
-print(f"- {item2}:        ${amount2:.2f}")
-print(f"Subtotal: \t${total:.2f}")
-print(f"Average: \t${average:.2f}")
-print(f"Tax: \t\t${tax:.2f}")
-print(f"Grand total: \t${grand_total:.2f}")
-
-if over_budget:
-    print(f"Over budget by ${grand_total - budget:.2f}!")
-elif grand_total > budget * 0.9:
-    print(f"Careful: only ${left:.2f} left.")
-else:
-    print(f"Within budget. ${left:.2f} left.")
-
-print("\n" + "-" * 40)
-print("Made by: <Saja, Vince Stanley P.>  |  Installment 4")
+print("-" * 40)
+print("Made by: <Saja, Vince Stanley P.>  |  Installment 5")
 print("=" * 40)
